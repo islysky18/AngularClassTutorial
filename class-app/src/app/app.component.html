@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>My First Attribute Directive</h1>
+  <br />
+  <h2>Pick a highlight color</h2>
+  <div>
+    <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+    <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+    <input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
+  </div>
+  <p [appHighlight]="color">Highlight me!</p>
+  <p [appHighlight]="color" defaultColor="violet">Highlight me too!</p>
+</div>
+
+<!-- <app-parent></app-parent> -->

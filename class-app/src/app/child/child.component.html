@@ -1,0 +1,49 @@
+<p>child works!</p>
+<br />
+<br />
+
+<br />
+<br />
+<!-- <h4>Hello {{ message.name1 }}</h4> -->
+<h4>{{ getMessage() | json }}</h4>
+<input
+  type="text"
+  value="initial value"
+  (input)="setValue($event.target.value)"
+  #myinput
+/>{{ inputValue }}
+
+<br />
+<button (click)="setValue(myinput.value)">Send data to component</button>
+
+<br />
+
+<input [(ngModel)]="inputValue2" type="text" value="" />
+{{ inputValue2 }}
+<br />
+<input [(ngModel)]="password" type="password" value="" />
+{{ password }}
+<br />
+<button type="button" [disabled]="flag" class="btn btn-success">Submit</button>
+<br />
+<button type="button" class="btn btn-success" (click)="toggle()">
+  Toggle Table
+</button>
+
+<table border="1" *ngIf="flag">
+  <tr>
+    <th>Number</th>
+    <th>Value</th>
+    <th>status</th>
+    <th>statusOdd</th>
+  </tr>
+  <tr
+    *ngFor="let mes of message; let i = index; let e = even; let o = odd"
+    [ngClass]="{ odd: o, even: e }"
+  >
+    <td>{{ i + 1 }}</td>
+    <td>{{ mes.name }}</td>
+    <td>{{ e }}</td>
+    <td>{{ o }}</td>
+  </tr>
+</table>
