@@ -1,11 +1,17 @@
 <p>child works!</p>
 <br />
 <br />
-
+<!-- content projection: pass html content from parent to child -->
+<ng-content></ng-content>
 <br />
+<h3>Counter in Child : {{ counterInChild }}</h3>
 <br />
+<h3>Counter in Child to be pass to Parent: {{ countertoPasstoParent }}</h3>
+<br />
+<button class="btn btn-danger" (click)="increment()">Increment</button>
+<button class="btn btn-success" (click)="decrement()">Decrement</button>
 <!-- <h4>Hello {{ message.name1 }}</h4> -->
-<h4>{{ getMessage() | json }}</h4>
+<!-- <h4>{{ getMessage() | json }}</h4>
 <input
   type="text"
   value="initial value"
@@ -46,4 +52,4 @@
     <td>{{ e }}</td>
     <td>{{ o }}</td>
   </tr>
-</table>
+</table> -->

@@ -8,11 +8,20 @@ import { ChildComponent } from './child/child.component';
 import { MyCustomModule } from './my-custom/my-custom.module';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
+import { ProductService } from './product.service';
+import { MytestService } from './services/mytest.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HighlightDirective],
-  imports: [BrowserModule, AppRoutingModule, MyCustomModule, FormsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MyCustomModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+  providers: [ProductService, MytestService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,11 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  EventEmitter,
+  Output,
+  OnChanges,
+  SimpleChanges,
+  OnDestroy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css'],
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent implements OnInit, OnChanges, OnDestroy {
   message = [
     { name: 'New Class1' },
     { name: 'New Class2' },
@@ -17,9 +26,26 @@ export class ChildComponent implements OnInit {
   inputValue2 = 'hello';
   password = '';
 
-  constructor() {}
+  @Input()
+  counterInChild = 0;
 
-  ngOnInit(): void {}
+  countertoPasstoParent = 0;
+
+  @Output()
+  counterchanged: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor() {}
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    //clean up work
+  }
+
+  ngOnInit() {
+    //usually use for call backend to present the data
+    this.counterInChild = 4000;
+  }
 
   getMessage() {
     return this.message;
@@ -30,5 +56,14 @@ export class ChildComponent implements OnInit {
   }
   toggle() {
     this.flag = !this.flag;
+  }
+
+  increment() {
+    this.countertoPasstoParent++;
+    this.counterchanged.emit(this.countertoPasstoParent);
+  }
+  decrement() {
+    this.countertoPasstoParent--;
+    this.counterchanged.emit(this.countertoPasstoParent);
   }
 }

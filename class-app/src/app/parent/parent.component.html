@@ -1,2 +1,22 @@
-<p>parent works!</p>
-<app-child></app-child>
+<h3>This is Parent Component</h3>
+<h4>Counter in Parent: {{ CounterInParent }}</h4>
+<button class="btn btn-primary" (click)="incrementCounter()">
+  Increment Counter
+</button>
+<br />
+<input #myinput type="text" value="myviewchild" />
+<br />
+<h4>Counter from Child : {{ CounterFromChild }}</h4>
+
+<app-child
+  [counterInChild]="CounterInParent"
+  (counterchanged)="myEventHandler($event)"
+  #myChild
+>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate in
+    maiores aperiam odit asperiores, harum cum dolorem error tempore suscipit
+    voluptatum officiis nobis tempora quaerat iure neque minus. Fuga, soluta?
+  </p>
+</app-child>
+{{ myChild.counterInChild }}
